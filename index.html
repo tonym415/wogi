@@ -1,0 +1,154 @@
+<html>
+
+<head>
+  <!-- jquery -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js'></script>
+
+  <!-- bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- amcharts -->
+  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="https://www.amcharts.com/lib/3/radar.js"></script>
+  <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+
+  <!-- bootstrap plugins -->
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+  <!-- jquery steps -->
+  <script type="text/javascript" src="js/jquery.steps.min.js"></script>
+  <link rel="stylesheet" href="css/jquery-steps.css" type="text/css" media="all" />
+
+  <!-- w2ui -->
+  <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+
+  <!-- proprietary -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+  <link rel="stylesheet" href="css/app.css" type="text/css" media="all" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <center>
+    <h1> Guitar Journey Self-Assessment </h1>
+  </center>
+  <div class="container">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="panel-group wrap" id="bs-collapse">
+
+        <div class="panel">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+                         <a data-toggle="collapse" data-parent="#bs-collapse" href="#one"> Create a Question </a>
+                       </h4>
+          </div>
+          <div id="one" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div id="adminQuestion">
+                <form id="addQuestion_Question">
+                  <div class="w2ui-page page-0">
+                    <div class="w2ui-field">
+                      <label>Question Category:</label>
+                      <div>
+                        <select class='selectpicker' name="q_category_id"> </select>
+                      </div>
+                    </div>
+                    <div class="w2ui-field">
+                      <label>Question Text:</label>
+                      <div>
+                        <input type="hidden" name="q_id" value="" />
+                        <textarea id="q_text" name="q_text" type="text" style="width: 265px; height: 80px; resize: none"></textarea>
+                      </div>
+                    </div>
+                    <div class="w2ui-field" id='priority'>
+                      <label>Priority:</label>
+                      <input id="q_priority" name="q_priority">
+                    </div>
+                    <div class="w2ui-field">
+                      <div>
+                        <label class="form-check-label">
+                         Is this question part of a group:
+                         <input type="checkbox" class="form-check-input" name="yn_group" id="yn_group" />
+                       </label>
+                      </div>
+                    </div>
+                    <input type="hidden" name="q_text_group" id="q_text_group" value="" />
+                    <div id="g_question" style="width: 100%; height: 50%; display: none"> </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- end of panel -->
+
+        <div class="panel">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+                         <a data-toggle="collapse" data-parent="#bs-collapse" href="#two"> View Question</a>
+                       </h4>
+          </div>
+          <div id="two" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div id="viewQuestions">
+                <div id="question_grid" style="width: 100%; height: 500px;"> </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- end of panel -->
+
+      </div>
+      <!-- end of #bs-collapse  -->
+    </div>
+  </div>
+  <!-- end of container -->
+
+
+  <div id="assessmentForm">
+    <form id="assessment-form">
+      <h3>Accuracy</h3>
+      <fieldset></fieldset>
+      <h3>Strength</h3>
+      <fieldset></fieldset>
+      <h3>Speed</h3>
+      <fieldset></fieldset>
+      <h3>Social Aspects</h3>
+      <fieldset></fieldset>
+      <h3>Practice</h3>
+      <fieldset></fieldset>
+      <h3>Improvisation</h3>
+      <fieldset></fieldset>
+      <h3>Repertoire</h3>
+      <fieldset></fieldset>
+      <h3>Fretboard</h3>
+      <fieldset></fieldset>
+    </form>
+  </div>
+  <div id='chartContainer'>
+    <div id="sidebar" style="height: 300px; width: 200px; float: left"></div>
+    <div id="chartdiv" style="margin-left: 220px;"> </div>
+  </div>
+  <div id='chart_controls'>
+    <button input="button" id="btnTest">Test Data</button>
+    <label class="check-inline">
+            <input type="checkbox" class="form-check-input" name="alert" id="alert">
+                Show Results data
+        </label><br>
+  </div>
+</body>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/app.js"></script>
+
+</html>
